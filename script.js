@@ -11,6 +11,8 @@ class Produto{
             this.Salvar(produto)
         }
 
+        this.Listar()
+
     }
 
     lerDados(){
@@ -25,7 +27,7 @@ class Produto{
     }
 
     Validar(produto){
-        const produto = this.lerDados
+        const Produto = this.lerDados
         let msg = '';
 
         if(produto.nomeProduto == ''){
@@ -50,7 +52,27 @@ class Produto{
     }
 
        
+    Listar(){
+        let tbody = document.getElementById("tbody")
+        tbody.innerText = ''
 
+        for( let i = 0; i < this.arrayProdutos.length; i++){
+
+            let tr = tbody.insertRow();
+
+            let td_id = tr.insertCell();
+            let td_nome = tr.insertCell();
+            let td_preco = tr.insertCell();
+            let td_del = tr.insertCell();
+
+            td_id.innerText = this.arrayProdutos[i].id;
+            td_nome.innerText = this.arrayProdutos[i].nomeProduto;
+            td_preco.innerText = this.arrayProdutos[i].precoProduto;
+            let imagem = document.createElement('img')
+            imagem.src = 'assets/del.png'
+            td_del.appendChild(imagem)
+        }
+    }
 }
 
 var produto = new Produto();
